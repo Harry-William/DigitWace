@@ -1,0 +1,30 @@
+<form (ngSubmit)="insertData()">
+    <div class="mb-3 form-group">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="worker.name">
+    </div>
+    <div class="mb-3 form-group">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" [(ngModel)]="worker.email">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <td scope="col">NAME</td>
+            <td scope="col">EMAIL</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let worker of workers">
+            <th scope="row">{{worker.id}}</th>
+            <td>{{worker.name}}</td>
+            <td>{{worker.email}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="deleteData(worker.id)">Delete</button></td>
+            <td><button class="btn btn-warning btn-sm" routerLink="edit/{{worker.id}}">Edit</button></td>
+        </tr>
+    </tbody>
+</table>
